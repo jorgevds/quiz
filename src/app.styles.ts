@@ -3,8 +3,9 @@ import styled, { createGlobalStyle } from "styled-components";
 import BGImage from "./images/jcob-nasyr.jpg";
 
 export const GlobalStyle = createGlobalStyle`
-html{
-    height: 100%
+* {
+    box-sizing: border-box;
+    font-family: 'Catamaran', sans-serif;
 }
 body {
     background-image: url(${BGImage});
@@ -13,11 +14,8 @@ body {
     padding: 0 20px;
     display: flex;
     justify-content: center;
-}
-
-* {
-    box-sizing: border-box;
-    font-family: 'Catamaran', sans-serif;
+    width: 100%;
+    height: auto;
 }
 `;
 
@@ -65,5 +63,10 @@ export const Wrapper = styled.div`
   }
   .start {
     max-width: 200px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
   }
 `;

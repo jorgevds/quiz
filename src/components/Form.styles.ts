@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const FormWrapper = styled.div`
   width: 700px;
   background: #ebfeff;
   border-radius: 10px;
@@ -9,13 +9,19 @@ export const Wrapper = styled.div`
   box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.25);
   text-align: center;
 
-  p {
+  label,
+  option {
     font-size: 1rem;
+  }
+  input,
+  select {
+    margin: 10px 0;
+    padding: 10px 0;
+    text-align: center;
   }
 `;
 
 type ButtonWrapperProps = {
-  correct: boolean;
   userClicked: boolean;
 };
 
@@ -32,11 +38,9 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     width: 100%;
     height: 40px;
     margin: 5px 0;
-    background: ${({ correct, userClicked }) =>
-      correct
+    background: ${({ userClicked }) =>
+      userClicked
         ? "linear-gradient(90deg, #56ffa4, #59bc86)"
-        : !correct && userClicked
-        ? "linear-gradient(90deg, #ff5656, #c16868)"
         : "linear-gradient(90deg, #56ccff, #6eafb4)"};
     border: 3px solid white;
     box-shadow: 1px 2px 0px rgba(0, 0, 0, 0.1);
