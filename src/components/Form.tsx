@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Quiz from "./Quiz";
+import End from "./EndScreen";
 
 import { FormWrapper, ButtonWrapper } from "./Form.styles";
 
@@ -13,7 +14,9 @@ interface Props {
 const Form: React.FC<Props> = () => {
   const [questionsAmount, setQuestionsAmount] = useState(10);
   const [category, setCategory] = useState<number>(9);
-  const [difficultyQuestions, setDifficultyQuestions] = useState("easy");
+  const [difficultyQuestions, setDifficultyQuestions] = useState<string>(
+    "easy"
+  );
 
   const triviaCategories = [
     { id: 9, name: "General Knowledge", max: 50 },
@@ -75,10 +78,12 @@ const Form: React.FC<Props> = () => {
     <>
       {quizUnLoaded ? (
         <FormWrapper>
-          <form onSubmit={handleSubmit}>
-            <label>Choose the number of questions</label>
-            <label>{questionsAmount}</label>
+          <h2>Welcome to Quiz Yourself!</h2>
+          <h3>Choose your quiz criteria and hit submit to begin</h3>
 
+          <form onSubmit={handleSubmit}>
+            <label>Choose the number of questions:</label>
+            <label>{questionsAmount}</label>
             <input
               type="range"
               min={1}
@@ -135,8 +140,10 @@ const Form: React.FC<Props> = () => {
           questionsAmount={questionsAmount}
           category={category}
           difficultyQuestions={difficultyQuestions}
+          submit={submit}
         />
       )}
+      {/* {submit && !quizUnLoaded && <End />} */}
     </>
   );
 };

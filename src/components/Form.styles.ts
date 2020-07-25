@@ -8,6 +8,8 @@ export const FormWrapper = styled.div`
   padding: 20px;
   box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.25);
   text-align: center;
+  animation: fadein 0.8s;
+  transition: 0.5s;
 
   label,
   option {
@@ -47,5 +49,13 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     border-radius: 10px;
     color: white;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+  }
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 `;

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import QuestionCard from "./QuestionCard";
 import { QuestionState, fetchQuizQuestions } from "../API";
+import { Wrapper } from "../app.styles";
+
+import End from "./EndScreen";
 
 export type AnswerObject = {
   question: string;
@@ -13,12 +16,14 @@ export type Props = {
   questionsAmount: number;
   category?: number;
   difficultyQuestions?: string;
+  submit?: boolean;
 };
 
 const Quiz: React.FC<Props> = ({
   questionsAmount,
   category,
   difficultyQuestions,
+  submit,
 }) => {
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
@@ -70,15 +75,15 @@ const Quiz: React.FC<Props> = ({
       setNumber(nextQuestion);
     }
   };
+
   return (
     <>
       {gameOver ? (
         <button className="start" onClick={startTrivia}>
           Start the quiz
         </button>
-      ) : null}
-      {userAnswers.length === TOTAL_QUESTIONS ? (
-        <button className="start" onClick={startTrivia}>
+      ) : userAnswers.length === TOTAL_QUESTIONS ? (
+        <button className="end" onClick={startTrivia}>
           Play again?
         </button>
       ) : null}

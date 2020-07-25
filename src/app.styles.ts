@@ -15,7 +15,7 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: auto;
+    height: 100vh;
 }
 `;
 
@@ -23,6 +23,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 
   > p {
     color: #fff;
@@ -51,22 +52,55 @@ export const Wrapper = styled.div`
   }
 
   .start,
-  .next {
+  .next,
+  .end {
     cursor: pointer;
     background: linear-gradient(180deg, #fff, #ffcc91);
     border: 2px solid #d38558;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    height: 40px;
-    margin: 20px 0;
-    padding: 0 40px;
+    text-align: center;
+    padding: 10px 40px;
   }
   .start {
     max-width: 200px;
+    animation: fadeinMove 0.8s forwards;
+    animation-timing-function: ease;
+    position: absolute;
+  }
+  .start:hover,
+  .end:hover {
+    background: linear-gradient(180deg, #fff, #ffdd8f);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
+  }
+  .end {
+    max-width: 200px;
+    animation: fadein 0.8s;
+    animation-timing-function: ease;
   }
   form {
     display: flex;
     flex-direction: column;
     text-align: center;
+  }
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeinMove {
+    0% {
+      opacity: 0;
+      top: 35vh;
+    }
+
+    100% {
+      opacity: 1;
+      top: 50vh;
+    }
   }
 `;
