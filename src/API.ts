@@ -1,4 +1,5 @@
 import { shuffleArray } from "./utils";
+import { Console } from "console";
 
 export type Question = {
   category: string;
@@ -18,9 +19,23 @@ export const fetchQuizQuestions = async (
   category: number | undefined,
   difficulty: string | undefined
 ) => {
-  const endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;
+  function chooseEndpoint() {
+    if (category && difficulty) {
+      const endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;
+      return endpoint;
+    } else if (difficulty) {
+      const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple`;
+      return endpoint;
+    } else if (category) {
+      const endpoint = `https://opentdb.com/api.php?amount=${amount}&category=${category}&type=multiple`;
+      return endpoint;
+    } else {
+      const endpoint = `https://opentdb.com/api.php?amount=${amount}&type=multiple`;
+      return endpoint;
+    }
+  }
 
-  const data = await (await fetch(endpoint)).json();
+  const data = await (await fetch(chooseEndpoint())).json();
   return data.results.map((question: Question) => ({
     ...question,
     answers: shuffleArray([

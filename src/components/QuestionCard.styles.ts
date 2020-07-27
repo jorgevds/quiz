@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+type WrapperProps = {
+  CATEGORY: number;
+};
+
 export const Wrapper = styled.div`
   width: 60vw;
   background: #ebfeff;
@@ -13,6 +17,10 @@ export const Wrapper = styled.div`
 
   p {
     font-size: 1rem;
+    color: #359a1c;
+  }
+  .number {
+    color: rgba(53, 154, 28, 0.6);
   }
 `;
 

@@ -12,11 +12,9 @@ interface Props {
 }
 
 const Form: React.FC<Props> = () => {
-  const [questionsAmount, setQuestionsAmount] = useState(10);
-  const [category, setCategory] = useState<number>(9);
-  const [difficultyQuestions, setDifficultyQuestions] = useState<string>(
-    "easy"
-  );
+  const [questionsAmount, setQuestionsAmount] = useState(1);
+  const [category, setCategory] = useState<number>();
+  const [difficultyQuestions, setDifficultyQuestions] = useState<string>();
 
   const triviaCategories = [
     { id: 9, name: "General Knowledge", max: 50 },
@@ -79,11 +77,14 @@ const Form: React.FC<Props> = () => {
       {quizUnLoaded ? (
         <FormWrapper>
           <h2>Welcome to Quiz Yourself!</h2>
-          <h3>Choose your quiz criteria and hit submit to begin</h3>
+          <h3>
+            Choose your quiz criteria and hit{" "}
+            <span className="submitText">submit</span> to begin
+          </h3>
 
           <form onSubmit={handleSubmit}>
             <label>Choose the number of questions:</label>
-            <label>{questionsAmount}</label>
+            <label className="numberInput">{questionsAmount}</label>
             <input
               type="range"
               min={1}
@@ -94,6 +95,8 @@ const Form: React.FC<Props> = () => {
                 setQuestionsAmount(parseInt(event.target.value))
               }
             ></input>
+
+            <label>Choose a category</label>
             <select
               name="category"
               value={category}
@@ -101,7 +104,9 @@ const Form: React.FC<Props> = () => {
                 setCategory(parseInt(event.target.value))
               }
             >
-              <option>Choose a category</option>
+              <option selected disabled>
+                Category
+              </option>
               {triviaCategories.map((triviaCategories) => (
                 <option key={triviaCategories.id} value={triviaCategories.id}>
                   {triviaCategories.name}
@@ -109,6 +114,8 @@ const Form: React.FC<Props> = () => {
               ))}
               ;
             </select>
+
+            <label>Choose a difficulty</label>
             <select
               name="difficulty"
               value={difficultyQuestions}
@@ -116,7 +123,9 @@ const Form: React.FC<Props> = () => {
                 setDifficultyQuestions(event.target.value)
               }
             >
-              <option>Choose a difficulty</option>
+              <option selected disabled>
+                Difficulty
+              </option>
               {difficulties.map((difficulties) => (
                 <option key={difficulties.id} value={difficulties.name}>
                   {difficulties.name}
@@ -129,9 +138,6 @@ const Form: React.FC<Props> = () => {
                 Submit
               </button>
             </ButtonWrapper>
-            {console.log(category)}
-            {console.log(difficultyQuestions)}
-            {console.log(questionsAmount)}
           </form>
         </FormWrapper>
       ) : null}
@@ -143,7 +149,6 @@ const Form: React.FC<Props> = () => {
           submit={submit}
         />
       )}
-      {/* {submit && !quizUnLoaded && <End />} */}
     </>
   );
 };
