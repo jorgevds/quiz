@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Quiz from "./Quiz";
-import End from "./EndScreen";
 
 import { FormWrapper, ButtonWrapper } from "./Form.styles";
 
@@ -12,7 +11,7 @@ interface Props {
 }
 
 const Form: React.FC<Props> = () => {
-  const [questionsAmount, setQuestionsAmount] = useState(1);
+  const [questionsAmount, setQuestionsAmount] = useState(10);
   const [category, setCategory] = useState<number>();
   const [difficultyQuestions, setDifficultyQuestions] = useState<string>();
 
@@ -84,7 +83,18 @@ const Form: React.FC<Props> = () => {
 
           <form onSubmit={handleSubmit}>
             <label>Choose the number of questions:</label>
-            <label className="numberInput">{questionsAmount}</label>
+
+            <input
+              className="numberInput"
+              type="number"
+              min={0}
+              max={50}
+              value={questionsAmount}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+                setQuestionsAmount(parseInt(event.target.value))
+              }
+            />
+
             <input
               type="range"
               min={1}
@@ -96,6 +106,8 @@ const Form: React.FC<Props> = () => {
               }
             ></input>
 
+            <h3>Leave either or both of these blank for a randomised quiz!</h3>
+
             <label>Choose a category</label>
             <select
               name="category"
@@ -103,18 +115,18 @@ const Form: React.FC<Props> = () => {
               onChange={(event: React.ChangeEvent<HTMLSelectElement>): void =>
                 setCategory(parseInt(event.target.value))
               }
+              defaultValue={"default"}
             >
-              <option selected disabled>
-                Category
+              <option value="default" disabled>
+                Category (max amount of questions you can request)
               </option>
               {triviaCategories.map((triviaCategories) => (
                 <option key={triviaCategories.id} value={triviaCategories.id}>
-                  {triviaCategories.name}
+                  {triviaCategories.name} ({triviaCategories.max})
                 </option>
               ))}
               ;
             </select>
-
             <label>Choose a difficulty</label>
             <select
               name="difficulty"
@@ -122,8 +134,9 @@ const Form: React.FC<Props> = () => {
               onChange={(event: React.ChangeEvent<HTMLSelectElement>): void =>
                 setDifficultyQuestions(event.target.value)
               }
+              defaultValue={"default"}
             >
-              <option selected disabled>
+              <option value="default" disabled>
                 Difficulty
               </option>
               {difficulties.map((difficulties) => (

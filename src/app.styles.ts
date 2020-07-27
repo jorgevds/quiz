@@ -15,14 +15,8 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
-    min-height: 120vh;
+    height: auto;
 }
-@media (max-width: 900px) {
-  height: 150vh;
-  }
-@media (min-width: 1200px) {
-  height: 150vh;
-  }
 `;
 
 export const Wrapper = styled.div`
@@ -76,10 +70,12 @@ export const Wrapper = styled.div`
     position: absolute;
   }
   .end,
+  .next,
   .endQuiz {
     max-width: 200px;
     animation: fadein 0.8s;
     animation-timing-function: ease;
+    margin: 0.6rem 0;
   }
   .end {
     padding: 10px 0;
@@ -89,9 +85,7 @@ export const Wrapper = styled.div`
     background: linear-gradient(180deg, #fff, #ffdd8f);
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.35);
   }
-  .next {
-    margin-top: 12px;
-  }
+
   form {
     display: flex;
     flex-direction: column;

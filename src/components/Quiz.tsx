@@ -82,15 +82,11 @@ const Quiz: React.FC<Props> = ({
   };
   return (
     <>
-      {gameOver && !quizEnded ? (
+      {gameOver && !quizEnded && (
         <button className="start" onClick={startTrivia}>
           Start the quiz
         </button>
-      ) : userAnswers.length === TOTAL_QUESTIONS && !quizEnded ? (
-        <button className="endQuiz" onClick={EndQuiz}>
-          End the quiz
-        </button>
-      ) : null}
+      )}
       {!gameOver && <p className="score">Score: {score}</p>}
       {loading && <p>Loading questions...</p>}
       {!loading && !gameOver && (
@@ -103,7 +99,6 @@ const Quiz: React.FC<Props> = ({
           callback={checkAnswer}
         />
       )}
-      {gameOver && quizEnded && <End score={score} />}
       {!gameOver &&
       !loading &&
       userAnswers.length === number + 1 &&
@@ -111,7 +106,15 @@ const Quiz: React.FC<Props> = ({
         <button className="next" onClick={nextQuestion}>
           Next question
         </button>
+      ) : userAnswers.length === TOTAL_QUESTIONS && !quizEnded ? (
+        <button className="endQuiz" onClick={EndQuiz}>
+          End the quiz
+        </button>
       ) : null}
+
+      {gameOver && quizEnded && (
+        <End score={score} TOTAL_QUESTIONS={TOTAL_QUESTIONS} />
+      )}
     </>
   );
 };

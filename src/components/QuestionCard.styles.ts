@@ -14,6 +14,14 @@ export const Wrapper = styled.div`
   text-align: center;
   animation: fadein 0.8s;
   transition: 0.5s;
+  margin-bottom: 10%;
+
+  @media (max-width: 900px) {
+    width: 80vw;
+  }
+  @media (min-width: 1400px) {
+    width: 500px;
+  }
 
   p {
     font-size: 1rem;

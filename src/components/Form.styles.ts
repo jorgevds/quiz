@@ -11,6 +11,7 @@ export const FormWrapper = styled.div`
   color: #359a1c;
   animation: fadein 0.8s;
   transition: 0.5s;
+  margin-bottom: 10%;
 
   @media (max-width: 900px) {
     width: 80vw;
@@ -37,11 +38,15 @@ export const FormWrapper = styled.div`
     text-indent: 8px;
     background: rgba(235, 254, 255, 0.6);
   }
+
   .numberInput {
+    display: block;
     border: 1px solid #359a1c;
     width: 10%;
     margin: auto;
     margin-top: 12px;
+    text-indent: 0px;
+    font-size: 1.2rem;
   }
 `;
 
@@ -55,6 +60,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
   :hover {
     opacity: 0.8;
   }
+
   button {
     cursor: pointer;
     user-select: none;
@@ -72,6 +78,7 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     color: white;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
   }
+
   @keyframes fadein {
     from {
       opacity: 0;
