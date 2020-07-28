@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Quiz from "./Quiz";
 
-import { FormWrapper, ButtonWrapper } from "./Form.styles";
+import { FormWrapper, FormButtonWrapper } from "./Components.styles";
 
 interface Props {
   questionsAmount?: number;
@@ -146,11 +146,11 @@ const Form: React.FC<Props> = () => {
               ))}
               ;
             </select>
-            <ButtonWrapper userClicked={submit}>
+            <FormButtonWrapper userClicked={submit}>
               <button type="submit" name="Submit">
                 Submit
               </button>
-            </ButtonWrapper>
+            </FormButtonWrapper>
           </form>
         </FormWrapper>
       ) : null}

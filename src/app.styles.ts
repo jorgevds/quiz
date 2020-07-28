@@ -95,7 +95,9 @@ export const Wrapper = styled.div`
   h3 {
     color: #359a1c;
   }
-
+  .favicon {
+    opacity: 0.2;
+  }
   @keyframes fadein {
     0% {
       opacity: 0;

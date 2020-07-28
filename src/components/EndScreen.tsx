@@ -1,5 +1,5 @@
 import React from "react";
-import { EndWrapper } from "./EndScreen.styles";
+import { EndWrapper } from "./Components.styles";
 import { Wrapper } from "../app.styles";
 
 type Props = {
