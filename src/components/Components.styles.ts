@@ -76,6 +76,11 @@ export const FormWrapper = styled(QuestionCardWrapper)`
     text-indent: 0px;
     font-size: 1.2rem;
   }
+  @media (max-width: 425px) {
+    .numberInput {
+      width: 20%;
+    }
+  }
 `;
 
 type ButtonWrapperProps = {

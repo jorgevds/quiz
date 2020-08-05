@@ -1,6 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 //@ts-ignore
-import BGImage from "./images/jcob-nasyr.jpg";
+import BGImage from "./images/pexels-quang-nguyen-vinh-3355788.jpg";
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -10,11 +10,15 @@ export const GlobalStyle = createGlobalStyle`
 body {
     background-image: url(${BGImage});
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
     margin: 0;
     padding: 0 20px;
     display: flex;
     justify-content: center;
     width: 100%;
+    min-height: 150vh;
     height: auto;
 }
 `;
@@ -97,6 +101,8 @@ export const Wrapper = styled.div`
   }
   .favicon {
     opacity: 0.2;
+    position: absolute;
+    top: 10px;
   }
   @keyframes fadein {
     0% {

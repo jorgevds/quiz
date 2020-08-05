@@ -82,6 +82,7 @@ const Quiz: React.FC<Props> = ({
   };
   return (
     <>
+      <Wrapper />
       {gameOver && !quizEnded && (
         <button className="start" onClick={startTrivia}>
           Start the quiz

@@ -9,16 +9,24 @@ const App = () => {
       <GlobalStyle />
       <Wrapper>
         <h1>Quiz Yourself</h1>
-        <Form />
         <span className="favicon">
-          <a target="_blank" href="https://icons8.com/icons/set/trophy--v2">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://icons8.com/icons/set/trophy--v2"
+          >
             Trophy icon
           </a>{" "}
           icon by{" "}
-          <a target="_blank" href="https://icons8.com">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://icons8.com"
+          >
             Icons8
           </a>
         </span>
+        <Form />
       </Wrapper>
     </>
   );
