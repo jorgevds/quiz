@@ -55,13 +55,15 @@ export const FormWrapper = styled(QuestionCardWrapper)`
   label,
   option {
     font-size: 1rem;
+    margin: 10px 0;
   }
 
   input,
   select {
-    margin: 10px 0;
+    margin: auto;
     padding: 10px 0;
     text-align: center;
+    width: 100%;
     color: rgba(53, 154, 28, 0.6);
     text-indent: 8px;
     background: rgba(235, 254, 255, 0.6);
@@ -76,6 +78,7 @@ export const FormWrapper = styled(QuestionCardWrapper)`
     text-indent: 0px;
     font-size: 1.2rem;
   }
+
   @media (max-width: 425px) {
     .numberInput {
       width: 20%;

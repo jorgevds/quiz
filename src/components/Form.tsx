@@ -82,70 +82,76 @@ const Form: React.FC<Props> = () => {
           </h3>
 
           <form onSubmit={handleSubmit}>
-            <label>Choose the number of questions:</label>
-
-            <input
-              className="numberInput"
-              type="number"
-              min={0}
-              max={50}
-              value={questionsAmount}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
-                setQuestionsAmount(parseInt(event.target.value))
-              }
-            />
-
-            <input
-              type="range"
-              min={1}
-              max={50}
-              name="questionsAmount"
-              value={questionsAmount}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
-                setQuestionsAmount(parseInt(event.target.value))
-              }
-            ></input>
+            <label>
+              Choose the number of questions:
+              <input
+                type="number"
+                className="numberInput"
+                min={0}
+                max={50}
+                value={questionsAmount}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+                  setQuestionsAmount(parseInt(event.target.value))
+                }
+              />
+              <input
+                type="range"
+                min={1}
+                max={50}
+                name="questionsAmount"
+                value={questionsAmount}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+                  setQuestionsAmount(parseInt(event.target.value))
+                }
+              ></input>
+            </label>
 
             <h3>Leave either or both of these blank for a randomised quiz!</h3>
 
-            <label>Choose a category</label>
-            <select
-              name="category"
-              value={category}
-              onChange={(event: React.ChangeEvent<HTMLSelectElement>): void =>
-                setCategory(parseInt(event.target.value))
-              }
-              defaultValue={"default"}
-            >
-              <option value="default" disabled>
-                Category (max amount of questions you can request)
-              </option>
-              {triviaCategories.map((triviaCategories) => (
-                <option key={triviaCategories.id} value={triviaCategories.id}>
-                  {triviaCategories.name} ({triviaCategories.max})
+            <label>
+              Choose a category
+              <select
+                name="category"
+                value={category}
+                onChange={(event: React.ChangeEvent<HTMLSelectElement>): void =>
+                  setCategory(parseInt(event.target.value))
+                }
+                defaultValue={"default"}
+              >
+                <option value="default" disabled>
+                  Category (max amount of questions you can request)
                 </option>
-              ))}
-              ;
-            </select>
-            <label>Choose a difficulty</label>
-            <select
-              name="difficulty"
-              value={difficultyQuestions}
-              onChange={(event: React.ChangeEvent<HTMLSelectElement>): void =>
-                setDifficultyQuestions(event.target.value)
-              }
-              defaultValue={"default"}
-            >
-              <option value="default" disabled>
-                Difficulty
-              </option>
-              {difficulties.map((difficulties) => (
-                <option key={difficulties.id} value={difficulties.name}>
-                  {difficulties.name}
+                {triviaCategories.map((triviaCategories) => (
+                  <option key={triviaCategories.id} value={triviaCategories.id}>
+                    {triviaCategories.name} ({triviaCategories.max})
+                  </option>
+                ))}
+                ;
+              </select>
+            </label>
+
+            <label>
+              Choose a difficulty
+              <select
+                name="difficulty"
+                value={difficultyQuestions}
+                onChange={(event: React.ChangeEvent<HTMLSelectElement>): void =>
+                  setDifficultyQuestions(event.target.value)
+                }
+                defaultValue={"default"}
+              >
+                <option value="default" disabled>
+                  Difficulty
                 </option>
-              ))}
-              ;
-            </select>
+                {difficulties.map((difficulties) => (
+                  <option key={difficulties.id} value={difficulties.name}>
+                    {difficulties.name}
+                  </option>
+                ))}
+                ;
+              </select>
+            </label>
+
             <FormButtonWrapper userClicked={submit}>
               <button type="submit" name="Submit">
                 Submit
