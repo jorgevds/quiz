@@ -1,6 +1,6 @@
 import React from "react";
 import { EndWrapper } from "./Components.styles";
-import { Wrapper } from "../app.styles";
+import "../app.styles";
 
 type Props = {
   score: number;
