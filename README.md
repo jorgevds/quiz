@@ -8,7 +8,7 @@ Simple quiz based on a React TypeScript tutorial published by freeCodeCamp (http
 
 As I was following along (on x2 speed, as one does), I felt I didn't quite like how the questions and difficulty were randomised every time. I wondered if it could prove useful to figure out this part of the functionality myself. So I set out to do a whole bunch of console.logging, making my own fetches to the API to really figure out how it worked. I then took quite a long time, admittedly, trying to return the expected results. Luckily, I pushed through and persevered, and all of those headaches are long behind me. The red squiggly lines/spaghetti still haunt me in my dreams some nights.
 
-![No more spaghetti pasta](https://user-images.githubusercontent.com/54646908/104853950-786bbd00-5904-11eb-888b-631f47c5b9ba.png)
+![No more spaghetti pasta](https://user-images.githubusercontent.com/54646908/104854954-01d1be00-590a-11eb-9a0a-fc622104eb1a.png)
 ###### No more spaghetti pasta :spaghetti:
 
 Above is the config code I settled on to enable this added functionality. My app now provides the user the option to specify the amount of questions thesemselves, as well as the options to select a category and/or a difficulty. And if one or the other is, or both are, left unspecified, the API will instead return a randomised set of questions. 
